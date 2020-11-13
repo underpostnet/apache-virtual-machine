@@ -9,12 +9,82 @@ function renderPath($uri, $str_data, $lang){
 
   for($i=0;$i<l($data['path']);$i++){
 
-    if(($data['url'].$data['path'][$i]['url'])==("http://".explode("/", $data['url'])[2].$uri)){
+    if(($data['url'].$data['path'][$i]['url'])==("https://".explode("/", $data['url'])[2].$uri)){
 
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
       $path = $data['path'][$i];
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
+
+      $h1 = "";
+
+      for($ii=0;$ii<l($path['h1']);$ii++){
+
+        $h1 = $h1."<h1>".$path['h1'][$ii][$lang]."</h1>";
+
+      }
+
+      $h2 = "";
+
+      for($ii=0;$ii<l($path['h2']);$ii++){
+
+        $h2 = $h2."<h2>".$path['h2'][$ii][$lang]."</h2>";
+
+      }
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
+
+      $global_css = "<style>".file_get_contents($data['ywork_file']."/style/".$path['main_css']);
+
+      for($ii=0;$ii<l($path['modules']);$ii++){
+
+        // $path['modules'][$ii]
+
+        $global_css = $global_css.file_get_contents($data['path_file']."modules/".$path['modules'][$ii]."/style.css");
+
+      }
+
+      $global_css = $global_css."</style>";
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
+
+
+      $global_js = "<script>
+
+      var path = '".$data['url']."';
+
+      ".file_get_contents($data['ywork_file']."/build/client/vanilla.js")
+      .file_get_contents($data['ywork_file']."/build/client/util.js");
+
+      for($ii=0;$ii<l($path['modules']);$ii++){
+
+        // $path['modules'][$ii]
+
+        $global_js = $global_js.file_get_contents($data['path_file']."modules/".$path['modules'][$ii]."/main.js");
+
+      }
+
+      $global_js = $global_js."</script>";
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
+
+      $microdata = '';
+
+      for($ii=0;$ii<l($path['microdata']);$ii++){
+
+        // $path['modules'][$ii]
+
+        $microdata = $microdata.'<script type="application/ld+json">'
+        .file_get_contents($data['path_file']."microdata/".$path['microdata'][$ii].".json")
+        .'</script>';
+
+      }
 
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
@@ -29,6 +99,8 @@ function renderPath($uri, $str_data, $lang){
 
           <title>".$path['title'][$lang]."</title>
 
+          ".$microdata."
+
           <meta name ='title' content='".$path['title'][$lang]."' />
           <meta name ='description' content='".$path['description'][$lang]."' />
           <meta name ='theme-color' content = '".$data['color']."' />
@@ -36,9 +108,21 @@ function renderPath($uri, $str_data, $lang){
           <link rel='icon' type='image/png' href='".$data['url']."/assets/".$data['favicon']."' />
 
 
+          <script async src='https://www.googletagmanager.com/gtag/js?id=".$data['googletag']."'></script>
+
+          <script>
+
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '".$data['googletag']."');
+
+          </script>
+
+
           <link rel='apple-touch-icon' sizes='180x180' href='".$data['url']."/assets/app/apple-touch-icon.png'>
           <link rel='icon' type='image/png' sizes='32x32' href='".$data['url']."/assets/app/favicon-32x32.png'>
-          <link rel='icon' type='image/png' sizes='194x194' href='".$data['url']."/assets/app/favicon-194x194.png'>
+          <link rel='icon' type='image/png' sizes='16x16' href='".$data['url']."/assets/app/favicon-16x16.png'>
 
           <link rel='icon' type='image/png' sizes='36x36' href='".$data['url']."/assets/app/android-chrome-36x36.png'>
           <link rel='icon' type='image/png' sizes='48x48' href='".$data['url']."/assets/app/android-chrome-48x48.png'>
@@ -71,10 +155,17 @@ function renderPath($uri, $str_data, $lang){
           <meta name='viewport' content='initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
           <meta name='viewport' content='width=device-width, user-scalable=no' />
 
+          ".$global_css.$global_js."
 
         </head>
 
         <body>
+
+          ".$h1.$h2."
+
+          <script  type='text/javascript' async defer>"
+          .file_get_contents($data['path_file']."/path/".$path['main_js'])
+          ."</script>
 
         </body>
 

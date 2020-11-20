@@ -9,7 +9,9 @@ function renderPath($uri, $str_data, $lang){
 
   for($i=0;$i<l($data['path']);$i++){
 
-    if(($data['url'].$data['path'][$i]['url'])==("https://".explode("/", $data['url'])[2].$uri)){
+    if(($data['url'].$data['path'][$i]['url'])
+            ==
+      (explode("?",("https://".explode("/", $data['url'])[2].$uri))[0])){
 
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------

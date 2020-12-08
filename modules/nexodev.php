@@ -55,10 +55,36 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
+      session_start();
+
+      $session_state = 'false';
+
+      $session_js = "";
+
+      if(isset($_SESSION['nexodev-name'])){
+
+        $session_state = 'true';
+
+        $session_js = "
+
+          var session_name = '".$_SESSION['nexodev-name']."';
+
+        ";
+
+      }
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
 
       $global_js = "<script>
 
       var path = '".$data['url']."';
+      var session_state = ".$session_state.";
+
+      ".$session_js."
+
+      console.log('path->'+path);
+      console.log('session->'+session_state);
 
       ".file_get_contents($data['ywork_file']."/build/client/vanilla.js")
       .file_get_contents($data['ywork_file']."/build/client/util.js");

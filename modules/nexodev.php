@@ -68,6 +68,8 @@ function renderPath($uri, $str_data, $lang){
         $session_js = "
 
           var session_name = '".$_SESSION['nexodev-name']."';
+          var session_info = `".file_get_contents('c:/xampp/htdocs/nexodev/draft/json/nexodev_users/'
+          .$_SESSION['nexodev-email'].'.html')."`;
 
         ";
 

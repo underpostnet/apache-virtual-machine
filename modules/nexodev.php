@@ -76,10 +76,26 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
+      $session_serv = 'false';
+
+      if(isset($_GET['service'])){
+
+        if($_GET['service']=='true'){
+
+          $session_serv = 'true';
+
+        }
+
+      }
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
+
       $global_js = "<script>
 
       var path = '".$data['url']."';
       var session_state = ".$session_state.";
+      var session_serv = ".$session_serv.";
 
       ".$session_js."
 

@@ -61,7 +61,7 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
-      $global_css = "<style>".file_get_contents($data['ywork_file']."/style/".$path['main_css']);
+      $global_css = "<style>".file_get_contents("c:/xampp/htdocs/client/style/".$path['main_css']);
 
       for($ii=0;$ii<l($path['modules']);$ii++){
 
@@ -89,7 +89,7 @@ function renderPath($uri, $str_data, $lang){
         $session_js = "
 
           var session_name = '".$_SESSION['nexodev-name']."';
-          var session_info = `".file_get_contents('c:/xampp/htdocs/nexodev/draft/json/nexodev_users/'
+          var session_info = `".file_get_contents("c:/dd/global_data/json/nexodev/nexodev_users/"
           .$_SESSION['nexodev-email'].'.html')."`;
 
         ";
@@ -125,8 +125,8 @@ function renderPath($uri, $str_data, $lang){
       console.log('path->'+path);
       console.log('session->'+session_state);
 
-      ".file_get_contents($data['ywork_file']."/build/client/vanilla.js")
-      .file_get_contents($data['ywork_file']."/build/client/util.js");
+      ".file_get_contents("c:/xampp/htdocs/client/vanilla.js")
+      .file_get_contents("c:/xampp/htdocs/client/util.js");
 
       for($ii=0;$ii<l($path['modules']);$ii++){
 

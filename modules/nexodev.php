@@ -114,6 +114,31 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
+      $str_cap = "";
+
+      if(!($session_serv=="true")){
+
+          $str_cap = "<script type='text/javascript'>
+
+            var grecaptchaTest;
+            var onloadCallback = function() {
+              grecaptcha.render('test-recaptcha', {
+                'sitekey' : '".$data['gcap']."'
+              });
+              grecaptchaTest = grecaptcha;
+            };
+
+            function isCaptchaChecked() {
+              return grecaptchaTest && grecaptchaTest.getResponse().length !== 0;
+            }
+
+          </script>";
+
+      }
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
+
       $global_js = "<script>
 
       var path = '".$data['url']."';
@@ -187,21 +212,7 @@ function renderPath($uri, $str_data, $lang){
           </script>
 
 
-          <script type='text/javascript'>
-
-  					var grecaptchaTest;
-  					var onloadCallback = function() {
-  						grecaptcha.render('test-recaptcha', {
-  							'sitekey' : '".$data['gcap']."'
-  						});
-  						grecaptchaTest = grecaptcha;
-  					};
-
-  					function isCaptchaChecked() {
-  						return grecaptchaTest && grecaptchaTest.getResponse().length !== 0;
-  					}
-
-  				</script>
+          ".$str_cap."
 
   				<script
           type='text/javascript'

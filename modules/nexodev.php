@@ -61,7 +61,7 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
-      $global_css = "<style>".file_get_contents("c:/xampp/htdocs/client/style/".$path['main_css']);
+      $global_css = "<style>".file_get_contents("c:/dd/deploy_area/client/style/".$path['main_css']);
 
       for($ii=0;$ii<l($path['modules']);$ii++){
 
@@ -150,8 +150,8 @@ function renderPath($uri, $str_data, $lang){
       console.log('path->'+path);
       console.log('session->'+session_state);
 
-      ".file_get_contents("c:/xampp/htdocs/client/vanilla.js")
-      .file_get_contents("c:/xampp/htdocs/client/util.js");
+      ".file_get_contents("c:/dd/deploy_area/client/vanilla.js")
+      .file_get_contents("c:/dd/deploy_area/client/util.js");
 
       for($ii=0;$ii<l($path['modules']);$ii++){
 

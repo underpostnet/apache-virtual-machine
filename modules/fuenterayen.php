@@ -9,9 +9,30 @@ function renderPath($uri, $str_data, $lang){
 
   for($i=0;$i<l($data['path']);$i++){
 
-    if( (($data['url'].$data['path'][$i]['url']).('api/underpost.php'))
+    if(
+
+
+      (
+
+      ($data['url'].$data['path'][$i]['url'])
             ==
-      (explode("?",("https://".explode("/", $data['url'])[2].$uri))[0]) ){
+      (explode("?",("https://".explode("/", $data['url'])[2].$uri))[0])
+
+      )
+
+      or
+
+      (
+
+        ($data['url'].$data['path'][$i]['url'].'index.php')
+              ==
+        (explode("?",("https://".explode("/", $data['url'])[2].$uri))[0])
+
+
+      )
+
+
+    ){
 
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
@@ -91,7 +112,7 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
-      echo reduce("
+      echo ("
 
       <!DOCTYPE html>
 
@@ -109,15 +130,18 @@ function renderPath($uri, $str_data, $lang){
           <link rel='canonical' href='".$data['url'].$path['url']."' />
           <link rel='icon' type='image/png' href='".$data['url']."/assets/".$data['favicon']."' />
 
-          <!-- Google Tag Manager -->
-          <!--
-          <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-5H3SX46');</script>
-          -->
-          <!-- End Google Tag Manager -->
+
+          <script async src='https://www.googletagmanager.com/gtag/js?id=".$data['googletag']."'></script>
+
+          <script>
+
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '".$data['googletag']."');
+
+          </script>
+
 
           <link rel='apple-touch-icon' sizes='180x180' href='".$data['url']."/assets/app/apple-touch-icon.png'>
           <link rel='icon' type='image/png' sizes='32x32' href='".$data['url']."/assets/app/favicon-32x32.png'>
@@ -143,6 +167,7 @@ function renderPath($uri, $str_data, $lang){
           <meta name='msapplication-TileImage' content='".$data['url']."/assets/app/mstile-144x144.png'>
           <meta name='theme-color' content='".$data['color']."'>
 
+
           <meta property='og:title' content='".$path['title'][$lang]."' />
           <meta property='og:description' content='".$path['description'][$lang]."' />
           <meta property='og:image' content='".$data['url']."/assets/".$path['image']."' />
@@ -155,31 +180,9 @@ function renderPath($uri, $str_data, $lang){
 
           ".$global_css.$global_js."
 
-          <script src='https://static.addtoany.com/menu/page.js'></script>
-
-          <script src='https://unpkg.com/github-card@1.2.1/dist/widget.js'></script>
-
-          <script async src='https://www.googletagmanager.com/gtag/js?id=".$data['googletag']."'></script>
-
-          <script>
-
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '".$data['googletag']."');
-
-          </script>
-
         </head>
 
         <body>
-
-        <!-- Google Tag Manager (noscript) -->
-        <!--
-        <noscript><iframe src='https://www.googletagmanager.com/ns.html?id=GTM-5H3SX46'
-        height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>
-        -->
-        <!-- End Google Tag Manager (noscript) -->
 
           ".$h1.$h2."
 

@@ -1,6 +1,6 @@
 <?php
 
-include 'C:/xampp/htdocs/nexodev/modules/util.php';
+include 'C:/dd/deploy_area/nexodev/modules/util.php';
 
 function renderPath($uri, $str_data, $lang){
 

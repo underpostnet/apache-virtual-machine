@@ -63,6 +63,15 @@ function renderPath($uri, $str_data, $lang){
 
       $global_css = "<style>".file_get_contents("c:/dd/deploy_area/client/style/".$path['main_css']);
 
+      $global_css = $global_css . "
+
+      @font-face {
+      	font-family: 'nunito';
+      	src: URL('".$data['url']."/assets/fonts/Nunito-Regular.ttf') format('truetype');
+      }
+
+      ";
+
       for($ii=0;$ii<l($path['modules']);$ii++){
 
         // $path['modules'][$ii]

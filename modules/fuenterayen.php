@@ -89,6 +89,7 @@ function renderPath($uri, $str_data, $lang){
       $global_js = "<script>
 
       var path = '".$data['url']."';
+      var path_ = '".$data['path'][$i]['url']."';
 
       ".file_get_contents("c:/dd/deploy_area/client/vanilla.js")
       .file_get_contents("c:/dd/deploy_area/client/util.js");

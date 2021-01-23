@@ -70,6 +70,18 @@ function renderPath($uri, $str_data, $lang){
       	src: URL('".$data['url']."/assets/fonts/Nunito-Regular.ttf') format('truetype');
       }
 
+      body, html {
+
+        font-family: 'nunito';
+
+      }
+
+      a {
+
+        text-decoration: none;
+
+      }
+
       ";
 
       for($ii=0;$ii<l($path['modules']);$ii++){

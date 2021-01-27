@@ -16,7 +16,7 @@ function renderPath($uri, $str_data, $lang){
 
       ($data['url'].$data['path'][$i]['url'])
             ==
-      (explode("?",("http://".explode("/", $data['url'])[2].$uri))[0])
+      strtolower((explode("?",("http://".explode("/", $data['url'])[2].$uri))[0]))
 
       )
 
@@ -26,8 +26,7 @@ function renderPath($uri, $str_data, $lang){
 
         ($data['url'].$data['path'][$i]['url'].'index.php')
               ==
-        (explode("?",("http://".explode("/", $data['url'])[2].$uri))[0])
-
+        strtolower((explode("?",("http://".explode("/", $data['url'])[2].$uri))[0]))
 
       )
 
@@ -97,7 +96,6 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
-
       $global_js = "<script>
 
       var path = '".$data['url']."';
@@ -105,6 +103,36 @@ function renderPath($uri, $str_data, $lang){
 
       ".file_get_contents("c:/dd/deploy_area/client/vanilla.js")
       .file_get_contents("c:/dd/deploy_area/client/util.js");
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
+
+      if($path['main_js']=='productos.js'){
+
+        $global_js = $global_js."
+
+          var data_productos = `".file_get_contents('c:/dd/global_data/json/fuenterayen/productos.json')."`;
+          data_productos = JSON.parse(data_productos);
+          /* console.log(data_productos); */
+
+        ";
+
+      }
+
+      if($path['main_js']=='home.js'){
+
+        $global_js = $global_js."
+
+          var data_promociones = `".file_get_contents('c:/dd/global_data/json/fuenterayen/promociones.json')."`;
+          data_promociones = JSON.parse(data_promociones);
+          /* console.log(data_promociones); */
+
+        ";
+
+      }
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
 
       for($ii=0;$ii<l($path['modules']);$ii++){
 

@@ -16,7 +16,7 @@ function renderPath($uri, $str_data, $lang){
 
       ($data['url'].$data['path'][$i]['url'])
             ==
-      (explode("?",("https://".explode("/", $data['url'])[2].$uri))[0])
+      strtolower((explode("?",("https://".explode("/", $data['url'])[2].$uri))[0]))
 
       )
 
@@ -26,7 +26,7 @@ function renderPath($uri, $str_data, $lang){
 
         ($data['url'].$data['path'][$i]['url'].'index.php')
               ==
-        (explode("?",("https://".explode("/", $data['url'])[2].$uri))[0])
+        strtolower((explode("?",("https://".explode("/", $data['url'])[2].$uri))[0]))
 
 
       )

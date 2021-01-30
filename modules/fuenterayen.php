@@ -193,7 +193,7 @@ function renderPath($uri, $str_data, $lang){
           <link rel='icon' type='image/png' href='".$data['url']."/assets/".$data['favicon']."' />
 
 
-          <!-- <script async src='https://www.googletagmanager.com/gtag/js?id=".$data['googletag']."'></script>
+          <script async src='https://www.googletagmanager.com/gtag/js?id=".$data['googletag']."'></script>
 
           <script>
 
@@ -202,7 +202,7 @@ function renderPath($uri, $str_data, $lang){
           gtag('js', new Date());
           gtag('config', '".$data['googletag']."');
 
-          </script> -->
+          </script>
 
 
           <link rel='apple-touch-icon' sizes='180x180' href='".$data['url']."/assets/app/apple-touch-icon.png'>

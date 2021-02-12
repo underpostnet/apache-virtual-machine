@@ -96,6 +96,45 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------
 
+      $str_cap = "";
+
+      if(
+        
+        ($path['main_js']=='productos.js')
+        or
+        ($path['main_js']=='promociones.js')
+
+      ){
+
+        $str_cap = "<script type='text/javascript'>
+
+          var grecaptchaTest;
+          var onloadCallback = function() {
+            grecaptcha.render('test-recaptcha', {
+              'sitekey' : '".$data['gcap']."'
+            });
+            grecaptchaTest = grecaptcha;
+          };
+
+          function isCaptchaChecked() {
+            return grecaptchaTest && grecaptchaTest.getResponse().length !== 0;
+          }
+
+        </script>
+
+
+        <script
+        type='text/javascript'
+        src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=es'
+        async defer></script>
+
+        ";
+
+      }
+
+      //------------------------------------------------------------------------
+      //------------------------------------------------------------------------
+
       $global_js = "<script>
 
       var path = '".$data['url']."';
@@ -203,6 +242,9 @@ function renderPath($uri, $str_data, $lang){
           gtag('config', '".$data['googletag']."');
 
           </script>
+
+
+          ".$str_cap."
 
 
           <link rel='apple-touch-icon' sizes='180x180' href='".$data['url']."/assets/app/apple-touch-icon.png'>

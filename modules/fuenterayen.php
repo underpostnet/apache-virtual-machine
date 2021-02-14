@@ -99,7 +99,7 @@ function renderPath($uri, $str_data, $lang){
       $str_cap = "";
 
       if(
-        
+
         ($path['main_js']=='productos.js')
         or
         ($path['main_js']=='promociones.js')
@@ -129,6 +129,45 @@ function renderPath($uri, $str_data, $lang){
         async defer></script>
 
         ";
+
+        //----------------------------------------------------------------------
+        //----------------------------------------------------------------------
+
+
+        $str_cap = $str_cap . "<script> var buy_request = null;";
+
+        session_start();
+
+        if(isset($_SESSION['fuenterayen-id_payku'])){
+
+          if($_SESSION['fuenterayen-id_payku']!=null){
+
+            $str_cap = $str_cap . "buy_request = true;";
+
+            $id_payku_validator = $_SESSION['fuenterayen-id_payku'];
+            $id_bearer_validator = $_SESSION['fuenterayen-bearer'];
+
+            include "c:/xampp/htdocs/nexodev/fuenterayen/api/payku/validator.php";
+
+            $_SESSION['fuenterayen-id_payku'] = null;
+            $_SESSION['fuenterayen-bearer'] = null;
+
+          }else{
+
+            $str_cap = $str_cap . "buy_request = false;";
+
+          }
+
+        }else{
+
+          $str_cap = $str_cap . "buy_request = false;";
+
+        }
+
+        $str_cap = $str_cap . "</script>";
+
+        //----------------------------------------------------------------------
+        //----------------------------------------------------------------------
 
       }
 

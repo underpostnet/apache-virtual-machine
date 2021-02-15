@@ -135,16 +135,11 @@ function renderPath($uri, $str_data, $lang){
         //----------------------------------------------------------------------
         //----------------------------------------------------------------------
 
-
         $str_cap = $str_cap . "<script> var buy_request = null;";
 
         session_start();
 
-        $str_cap = $str_cap . "var n_a;";
-
         if(isset($_SESSION['fuenterayen-id_payku'])){
-
-          $str_cap = $str_cap . "var n_b;";
 
           if($_SESSION['fuenterayen-id_payku']!=null){
 

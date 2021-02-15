@@ -103,6 +103,8 @@ function renderPath($uri, $str_data, $lang){
         ($path['main_js']=='productos.js')
         or
         ($path['main_js']=='promociones.js')
+        or
+        ($path['main_js']=='home.js')
 
       ){
 
@@ -138,7 +140,11 @@ function renderPath($uri, $str_data, $lang){
 
         session_start();
 
+        $str_cap = $str_cap . "var n_a;";
+
         if(isset($_SESSION['fuenterayen-id_payku'])){
+
+          $str_cap = $str_cap . "var n_b;";
 
           if($_SESSION['fuenterayen-id_payku']!=null){
 

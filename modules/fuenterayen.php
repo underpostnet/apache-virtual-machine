@@ -194,6 +194,10 @@ function renderPath($uri, $str_data, $lang){
           data_productos = JSON.parse(data_productos);
           /* console.log(data_productos); */
 
+          var data_promociones = `".file_get_contents('c:/dd/global_data/json/fuenterayen/promociones.json')."`;
+          data_promociones = JSON.parse(data_promociones);
+          /* console.log(data_promociones); */
+
         ";
 
       }

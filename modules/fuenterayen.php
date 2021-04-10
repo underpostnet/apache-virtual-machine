@@ -265,6 +265,8 @@ function renderPath($uri, $str_data, $lang){
 
         <head>
 
+          <meta charset='".$path['charset']."'>
+
           <title>".$path['title'][$lang]."</title>
 
           ".$microdata."

@@ -1,13 +1,44 @@
 <?php
 
 include 'C:/dd/deploy_area/nexodev/modules/util.php';
+$dev = false;
 
 function renderPath($uri, $str_data, $lang){
 
+  global $dev;
 
   $data = json_decode($str_data, true);
 
+  $ssl = "s";
+  if($dev){
+    $data['url']=$data['url_dev'];
+    $ssl = "";
+  }
+
   for($i=0;$i<l($data['path']);$i++){
+
+    if($dev){
+      $data['path'][$i]['url'] = $data['path'][$i]['url_dev'];
+    }
+
+    /*echo " URI: ".$uri;
+
+    echo "<br><br>";
+
+    echo ($data['url'].$data['path'][$i]['url']);
+    echo "<br>";
+    echo strtolower((explode("?",("https://".explode("/", $data['url'])[2].$uri))[0]));
+    echo "<br>";
+
+    echo "----------- <br>";
+
+    echo ($data['url'].$data['path'][$i]['url'].'index.php');
+    echo "<br>";
+    echo strtolower((explode("?",("https://".explode("/", $data['url'])[2].$uri))[0]));
+    echo "<br>";
+
+    echo "------------------------------ <br>";
+    echo "------------------------------ <br>";*/
 
     if(
 
@@ -16,7 +47,7 @@ function renderPath($uri, $str_data, $lang){
 
       ($data['url'].$data['path'][$i]['url'])
             ==
-      strtolower((explode("?",("https://".explode("/", $data['url'])[2].$uri))[0]))
+      strtolower((explode("?",("http".$ssl."://".explode("/", $data['url'])[2].$uri))[0]))
 
       )
 
@@ -26,7 +57,7 @@ function renderPath($uri, $str_data, $lang){
 
         ($data['url'].$data['path'][$i]['url'].'index.php')
               ==
-        strtolower((explode("?",("https://".explode("/", $data['url'])[2].$uri))[0]))
+        strtolower((explode("?",("http".$ssl."://".explode("/", $data['url'])[2].$uri))[0]))
 
 
       )
@@ -38,6 +69,10 @@ function renderPath($uri, $str_data, $lang){
       //------------------------------------------------------------------------
 
       $path = $data['path'][$i];
+
+      if($dev){
+        $data['url']=$data['url'].$data['path_dev'];
+      }
 
       //------------------------------------------------------------------------
       //------------------------------------------------------------------------

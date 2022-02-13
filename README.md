@@ -1,5 +1,4 @@
-# DOGMADUAL VIRTUAL MACHINE SYSTEM
-## Custom Apache VM
+## Custom Apache Virtual Machine and Proxy Server
 
 
 ![DOGMADUAL.COM](https://www.dogmadual.com/assets/dogmadual-social.jpg)
@@ -15,6 +14,9 @@
 
 
 - DNS
+
+
+- SSL
 
 
 - Proxy and Reverser Proxy

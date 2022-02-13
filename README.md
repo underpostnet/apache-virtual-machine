@@ -31,7 +31,7 @@
 - SSL
 
 
-- Proxy and Reverser Proxy
+- Proxy and Reverse Proxy
 
 
 - Net Status

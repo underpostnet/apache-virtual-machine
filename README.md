@@ -7,7 +7,19 @@
  - https://github.com/bramus/ansi-php
 
 
- `composer require bramus/ansi-php ~3.0`
+ ## Usage:
+
+
+ - install:
+
+
+`composer require bramus/ansi-php ~3.0`
+
+
+ - run:
+
+
+`php main.php`
 
 
 ### Controllers:

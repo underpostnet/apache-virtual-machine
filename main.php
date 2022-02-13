@@ -80,7 +80,7 @@ function mainProcess(){
 			if($main_config->prod){
         echo "pfn->"; // productions functions
         dns();
-        mailer();
+        // mailer();
       }
       $time_machine = new DateTime();
       echo "\n";

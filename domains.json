@@ -1,0 +1,17 @@
+[
+   {
+      "name":"example.com",
+      "api_key":null,
+      "user":null,
+      "subdomain":[
+         {
+            "name":"",
+            "ssl_path":null
+         },
+         {
+            "name":"www.",
+            "ssl_path":null
+         }
+      ]
+   }
+]

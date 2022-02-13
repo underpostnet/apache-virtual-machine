@@ -1,0 +1,11 @@
+{
+    "prod": false,
+    "timezone": null,
+    "main_process_delay": 180,
+    "ports": [ 80 ],
+    "xampp_delay": 2,
+    "last_ip": null,
+    "wlan_ssid": null,
+    "wlan_name": null,
+    "netsh_interface_name": null
+}

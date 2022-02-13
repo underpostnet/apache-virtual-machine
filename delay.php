@@ -12,15 +12,16 @@ echo str_pad($input, 10, "-=", STR_PAD_LEFT);  // produces "-=-=-Alien"
 echo str_pad($input, 10, "_", STR_PAD_BOTH);   // produces "__Alien___"
 echo str_pad($input, 6 , "___");               // produces "Alien_"
 
-
 */
 
-function delayWait($seconds, $por_color_interval = null){
+function delayWait($seconds, $por_color_interval = null, $msgLog = "Loading..." ){
   global $fnColors;
   $indexColor = 0;
   $sumMicrosecond = 0;
   $sumDisplaysColor = 0;
-  for($i=0; $i<=100; $i++){
+  $max_por = 100;
+  $factorLengthBar = 10;
+  for($i=0; $i<=$max_por; $i++){
     if( $sumDisplaysColor == $por_color_interval
         or
         $por_color_interval == null ){
@@ -30,14 +31,26 @@ function delayWait($seconds, $por_color_interval = null){
       $indexColor = 0 : null;
     }
     $sumDisplaysColor++;
-    $displaySecond = intval(($sumMicrosecond / 1000000));
-    // $floatSecond = floatval(($sumMicrosecond / 1000000));
+    // $displaySecond = intval(($sumMicrosecond / 1000000));
+    $displaySecond = floatval(($sumMicrosecond / 1000000));
+    $displaySecond = str_pad($displaySecond, 4, "0");
+    // ASCII Text Art
+    if($i%$factorLengthBar==0){
+      $barDisplayOk = str_repeat("█", ($i/$factorLengthBar));
+      $barDisplayWait = str_repeat("▒", (($max_por/$factorLengthBar)-($i/$factorLengthBar)));
+    }
     echo $fnColors[$indexColor]
-    ("Loading... {$i}%  {$displaySecond}/{$seconds}s \r");
+    ($msgLog." ".$barDisplayOk.$barDisplayWait."  {$i}%  {$displaySecond}/{$seconds}s \r");
     // sleep(1); -> seconds
-    $intervalTime = ($seconds/100)*1000*1000;
+    $intervalTime = ($seconds/$max_por)*1000*1000;
     usleep($intervalTime);
     $sumMicrosecond += $intervalTime;
+    if($i==$max_por){
+      echo $fnColors[$indexColor]
+      ($msgLog." "
+      .str_replace('█', ' ', $barDisplayOk.$barDisplayWait)
+      ."  {$i}%  {$seconds}/{$seconds}s            \r");
+    }
   }
   echo "\n";
 }

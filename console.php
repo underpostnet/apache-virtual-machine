@@ -59,4 +59,15 @@ function p_p($str){
 }
 
 
+$fnColors = [
+	"p_y",
+	"p_r",
+	"p_g",
+	"p_b",
+	"p_c",
+	"p_p"
+];
+
+
+
 ?>

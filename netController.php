@@ -34,7 +34,7 @@ function checkNetStatus(){
   // ip config
   // ports -> netstat -a -b
   // netsh wlan show networks
-  // netsh wlan connect ssid="VERDUGO" name="VERDUGO"
+  // netsh wlan connect ssid="[Name]" name="[Name]"
 
   /*
 
@@ -42,7 +42,6 @@ function checkNetStatus(){
   netsh interface set interface name="Wi-Fi" admin="DISABLED"
   netsh interface set interface name="Wi-Fi" admin="ENABLED"
 
-  en 5 intento de coenccion seguidor usar esto
 
   */
 

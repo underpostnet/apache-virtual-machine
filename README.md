@@ -37,6 +37,9 @@
 - Proxy and Reverse Proxy
 
 
+- WebSocket and Socket.io Support
+
+
 - Net Status
 
 

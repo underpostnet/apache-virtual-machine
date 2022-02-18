@@ -40,6 +40,9 @@
 - WebSocket and Socket.io Support
 
 
+- MariaDB and PostgreSQL Support
+
+
 - Net Status
 
 

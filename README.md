@@ -46,4 +46,4 @@
 - Net Status
 
 
-- Wifi Adpater
+- Wifi Adapter

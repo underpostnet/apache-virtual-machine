@@ -1,11 +1,15 @@
 {
-    "prod": false,
-    "timezone": null,
+    "prod": true,
+    "timezone": "America\/Santiago",
     "main_process_delay": 180,
-    "ports": [ 80 ],
+    "ports": [
+        80,
+        443,
+        3306
+    ],
     "xampp_delay": 2,
-    "last_ip": null,
-    "wlan_ssid": null,
-    "wlan_name": null,
-    "netsh_interface_name": null
+    "last_ip": "000.000.00.000",
+    "wlan_ssid": "name",
+    "wlan_name": "name",
+    "netsh_interface_name": "name"
 }

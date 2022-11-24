@@ -1,17 +1,80 @@
 [
    {
-      "name":"example.com",
-      "dns": null,
-      "api_key":null,
-      "user":null,
-      "subdomain":[
+      "name": "example.cl",
+      "dns": "dnsService",
+      "api_key": "???",
+      "user": "username",
+      "config_httpd": {
+         "ssl": true,
+         "socket_io": false,
+         "directory": "C:/xampp/htdocs/example/",
+         "proxys": [],
+         "mainSubdomain": "www."
+      },
+      "subdomain": [
          {
-            "name":"",
-            "ssl_path":null
+            "name": "",
+            "ssl_path": "example"
          },
          {
-            "name":"www.",
-            "ssl_path":null
+            "name": "www.",
+            "ssl_path": "example"
+         },
+         {
+            "name": "intranet.",
+            "ssl_path": "moodle_example",
+            "directory": "C:/xampp/htdocs/moodle_example/"
+         }
+      ]
+   },
+   {
+      "name": "example.com",
+      "dns": "dnsService",
+      "api_key": "???",
+      "user": "username",
+      "config_httpd": {
+         "ssl": true,
+         "socket_io": false,
+         "directory": false,
+         "proxys": [
+            [
+               "/cyon",
+               "ws://www.example.com:3002"
+            ],
+            [
+               "/ws-koyn",
+               "ws://www.example.com:3004"
+            ],
+            [
+               "/",
+               "http://www.example.com:3001"
+            ]
+         ],
+         "mainSubdomain": "www."
+      },
+      "subdomain": [
+         {
+            "name": "",
+            "ssl_path": "example"
+         },
+         {
+            "name": "www.",
+            "ssl_path": "example"
+         },
+         {
+            "name": "services.",
+            "ssl_path": "services_example",
+            "socket_io": "ws://services.example.com:5500",
+            "proxys": [
+               [
+                  "/",
+                  "http://services.example.com:5500/example"
+               ],
+               [
+                  "/peerjs",
+                  "http://services.example.com:3003/peerjs"
+               ]
+            ]
          }
       ]
    }

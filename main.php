@@ -14,6 +14,9 @@ include '.\netController.php';
 // json_decode option enable edit -> , true
 $domains = json_decode(file_get_contents( "./domains.json" ));
 $main_config = json_decode(file_get_contents( "./config.json" ));
+
+// include '.\MAILER\main.php';
+
 // var_dump($domains[0]);
 
 /*

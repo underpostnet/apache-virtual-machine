@@ -3,7 +3,7 @@
 $ip_api_array = array(
 
 	['http://ipecho.net/plain',false],
-	['https://ident.me/',false],
+	// ['https://ident.me/',false],
 	['https://v4.ident.me/',false],
 	['https://api.ip.sb/ip',false],
 	['https://api-ipv4.ip.sb/ip',false],

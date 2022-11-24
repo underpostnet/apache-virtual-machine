@@ -1,7 +1,7 @@
 ## Custom Apache Virtual Machine and Proxy Server
 
 
-![DOGMADUAL.COM](https://www.dogmadual.com/assets/dogmadual-social.jpg)
+![DOGMADUAL.COM](https://www.dogmadual.com/assets/apps/dogmadual/dogmadual-social.jpg)
 
 
  - https://github.com/bramus/ansi-php
